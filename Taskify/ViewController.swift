@@ -23,17 +23,15 @@ class ViewController: UIViewController {
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
         nav = UINavigationItem(title: "Taskify")
         addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addTapped))
+        
         // Any use of self. must come after this
         super.init(nibName: nil, bundle: nil)
         
         // Add navbar to current view (ViewController) and add '+' symbol
         self.view.addSubview(navBar)
-
-
-       
         nav.rightBarButtonItem = addBarButton;
         navBar.setItems([nav], animated: false);
-        //self.addBarButton.isEnabled = true
+        
         print("finished init")
         
     }
@@ -49,7 +47,6 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        print("in viewDidLoad()")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
