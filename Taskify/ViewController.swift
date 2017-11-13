@@ -38,6 +38,14 @@ class ViewController: UIViewController {
     
     @objc func addTapped(sender: UIBarButtonItem) {
         print("Add Button Tapped")
+        /*
+         Function needs to open another view with following fields:
+         Title:
+         Due Date: (not a required field as those unspecified  will sit in top of 
+         Group: (drop down with things like School, Work, and Personal each with own color)
+         Notes:
+         
+        */
     }
     
     
