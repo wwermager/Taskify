@@ -63,7 +63,7 @@ class ViewController: UITableViewController {
          Notes:
          etc.
         */
-        let svc: EditTask = EditTask(string: "Test")
+        let svc: AddTask = AddTask(string: "Test")
         svc.view.backgroundColor = UIColor.lightGray
         self.present(svc, animated: true) { () -> Void in
             NSLog("Task Edit View")

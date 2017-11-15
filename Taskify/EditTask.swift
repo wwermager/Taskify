@@ -8,50 +8,10 @@
 
 import UIKit
 
-class EditTask: UIViewController {
-    var label: UILabel
-    
-    let backBarButton: UIBarButtonItem
-    let nav: UINavigationItem
-    let navBar: UINavigationBar
-    
-    
-    init(string: String) {
-        label = UILabel()
-        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
-        nav = UINavigationItem(title: "Edit")
-        backBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(cancelTapped))
+class EditTask: AddTask {
+    //init(string: string){
         
-        
-        super.init(nibName: nil, bundle: nil)
-        nav.leftBarButtonItem = backBarButton;
-        navBar.setItems([nav], animated: false);
-        
-        
-        let screenSize: CGSize = UIScreen.main.bounds.size
-        let centerX: CGFloat = screenSize.width / 2
-        let centerY: CGFloat = screenSize.height / 2
-        label.text = string
-        label.backgroundColor = UIColor.clear
-        label.textColor = UIColor.black
-        label.textAlignment = NSTextAlignment.center
-        label.frame = CGRect(x: centerX-125, y: centerY-25, width: 250, height: 50)
-        label.isUserInteractionEnabled = true
-        
-        
-        self.view = UIView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT-PHONEHEIGHT/9))
-        //label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SecondaryViewController.handleTap(_:))))
-        self.view.addSubview(label)
-        self.view.addSubview(navBar)
-    }
-    @objc func cancelTapped(sender: UIBarButtonItem) {
-        print("Cancel Button Tapped")
-        let svc: ViewController = ViewController()
-        //svc.view.backgroundColor = UIColor.lightGray
-        self.present(svc, animated: false) { () -> Void in
-            NSLog("Returned to Tasks")
-        }
-    }
+   // }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

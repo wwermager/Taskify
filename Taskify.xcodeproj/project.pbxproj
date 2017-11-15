@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		75CBDB181FBBD0EF00E19DA6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB171FBBD0EF00E19DA6 /* Task.swift */; };
 		75CBDB1A1FBCE56700E19DA6 /* EditTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB191FBCE56700E19DA6 /* EditTask.swift */; };
+		75CBDB1C1FBD013100E19DA6 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB1B1FBD013100E19DA6 /* AddTask.swift */; };
 		75DACF171FA9779D00900F6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACF161FA9779D00900F6D /* AppDelegate.swift */; };
 		75DACF191FA9779D00900F6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DACF181FA9779D00900F6D /* ViewController.swift */; };
 		75DACF1C1FA9779D00900F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DACF1A1FA9779D00900F6D /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		75CBDB171FBBD0EF00E19DA6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		75CBDB191FBCE56700E19DA6 /* EditTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTask.swift; sourceTree = "<group>"; };
+		75CBDB1B1FBD013100E19DA6 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 		75DACF131FA9779D00900F6D /* Taskify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taskify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DACF161FA9779D00900F6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75DACF181FA9779D00900F6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				75DACF161FA9779D00900F6D /* AppDelegate.swift */,
 				75DACF181FA9779D00900F6D /* ViewController.swift */,
 				75CBDB191FBCE56700E19DA6 /* EditTask.swift */,
+				75CBDB1B1FBD013100E19DA6 /* AddTask.swift */,
 				75CBDB171FBBD0EF00E19DA6 /* Task.swift */,
 				75DACF1A1FA9779D00900F6D /* Main.storyboard */,
 				75DACF1D1FA9779D00900F6D /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75DACF191FA9779D00900F6D /* ViewController.swift in Sources */,
+				75CBDB1C1FBD013100E19DA6 /* AddTask.swift in Sources */,
 				75CBDB181FBBD0EF00E19DA6 /* Task.swift in Sources */,
 				75CBDB1A1FBCE56700E19DA6 /* EditTask.swift in Sources */,
 				75DACF171FA9779D00900F6D /* AppDelegate.swift in Sources */,
