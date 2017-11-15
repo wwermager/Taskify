@@ -7,7 +7,7 @@
 //
 
 import UIKit
-var tasks: [(String,[Task])] = [("No Due Date",[]),("Today",[]),("Tomorrow",[]),("This Week",[]),("Later",[])]
+var tasks: [(String,[Task])] = [("No Due Date",[Task(title: "Task 1", notes: "Test note", color: 1, hiPriority: false)]),("Today",[Task(title: "Task 2", notes: "Test note", color: 1, hiPriority: false)]),("Tomorrow",[Task(title: "Task 3", notes: "Test note", color: 1, hiPriority: false)]),("This Week",[Task(title: "Task 4", notes: "Test note", color: 1, hiPriority: false)]),("Later",[Task(title: "Task 5", notes: "Test note", color: 1, hiPriority: false)])]
 let DUEDATERANGECELL: String = "CourseTypeCell"
 class ViewController: UITableViewController {
     
@@ -119,7 +119,8 @@ class ViewController: UITableViewController {
     // UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (_,A) = tasks[indexPath.section]
-        let alert: UIAlertController = UIAlertController(title:"\(A[indexPath.row].number): \(A[indexPath.row].title)", message:A[indexPath.row].topics, preferredStyle:UIAlertControllerStyle.alert)
+        // Unrwap will probably be problematic
+        let alert: UIAlertController = UIAlertController(title:"\(A[indexPath.row].title): \(A[indexPath.row].title)", message:A[indexPath.row].notes!, preferredStyle:UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style:
             UIAlertActionStyle.default, handler:
             {(action: UIAlertAction!) -> Void in
