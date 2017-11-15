@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var tasks: [(String,[Task])] = [("No Due Date",[]),("Today",[]),("Tomorrow",[]),("This Week",[]),("Later",[])]
 class ViewController: UIViewController {
     
     // public/private var declarations go here as needed
