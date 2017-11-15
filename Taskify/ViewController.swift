@@ -9,21 +9,20 @@
 import UIKit
 var tasks: [(String,[Task])] = [("No Due Date",[Task(title: "Task 1", notes: "Test note", color: 1, hiPriority: false)]),("Today",[Task(title: "Task 2", notes: "Test note", color: 1, hiPriority: false)]),("Tomorrow",[Task(title: "Task 3", notes: "Test note", color: 1, hiPriority: false)]),("This Week",[Task(title: "Task 4", notes: "Test note", color: 1, hiPriority: false)]),("Later",[Task(title: "Task 5", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 6", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 7", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 8", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 9", notes: "Test note", color: 1, hiPriority: false)])]
 let DUEDATERANGECELL: String = "DateRangeTypeCell"
+let PHONEWIDTH: CGFloat = UIScreen.main.bounds.size.width
+let PHONEHEIGHT: CGFloat = UIScreen.main.bounds.size.height
+
 class ViewController: UITableViewController {
     
     // public/private var declarations go here as needed
+    private var taskView: UITableView
     let addBarButton: UIBarButtonItem
     let nav: UINavigationItem
     let navBar: UINavigationBar
-    private let PHONEWIDTH: CGFloat
-    private let PHONEHEIGHT: CGFloat
-    private var taskView: UITableView
     // end declarations
     
     init() {
         print(tasks.count)
-        PHONEWIDTH = UIScreen.main.bounds.size.width
-        PHONEHEIGHT = UIScreen.main.bounds.size.height
         
         // Initialize and position navigation bar
         
@@ -64,6 +63,11 @@ class ViewController: UITableViewController {
          Notes:
          etc.
         */
+        let svc: EditTask = EditTask(string: "Test")
+        svc.view.backgroundColor = UIColor.lightGray
+        self.present(svc, animated: true) { () -> Void in
+            NSLog("Task Edit View")
+        }
     }
     func editTable() {
         taskView.setEditing(!taskView.isEditing, animated: true)
