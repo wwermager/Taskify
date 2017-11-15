@@ -7,8 +7,8 @@
 //
 
 import UIKit
-var tasks: [(String,[Task])] = [("No Due Date",[Task(title: "Task 1", notes: "Test note", color: 1, hiPriority: false)]),("Today",[Task(title: "Task 2", notes: "Test note", color: 1, hiPriority: false)]),("Tomorrow",[Task(title: "Task 3", notes: "Test note", color: 1, hiPriority: false)]),("This Week",[Task(title: "Task 4", notes: "Test note", color: 1, hiPriority: false)]),("Later",[Task(title: "Task 5", notes: "Test note", color: 1, hiPriority: false)])]
-let DUEDATERANGECELL: String = "CourseTypeCell"
+var tasks: [(String,[Task])] = [("No Due Date",[Task(title: "Task 1", notes: "Test note", color: 1, hiPriority: false)]),("Today",[Task(title: "Task 2", notes: "Test note", color: 1, hiPriority: false)]),("Tomorrow",[Task(title: "Task 3", notes: "Test note", color: 1, hiPriority: false)]),("This Week",[Task(title: "Task 4", notes: "Test note", color: 1, hiPriority: false)]),("Later",[Task(title: "Task 5", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 6", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 7", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 8", notes: "Test note", color: 1, hiPriority: false),Task(title: "Task 9", notes: "Test note", color: 1, hiPriority: false)])]
+let DUEDATERANGECELL: String = "DateRangeTypeCell"
 class ViewController: UITableViewController {
     
     // public/private var declarations go here as needed
@@ -21,45 +21,48 @@ class ViewController: UITableViewController {
     // end declarations
     
     init() {
-        print("entered init")
+        print(tasks.count)
         PHONEWIDTH = UIScreen.main.bounds.size.width
         PHONEHEIGHT = UIScreen.main.bounds.size.height
         
         // Initialize and position navigation bar
+        
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
         nav = UINavigationItem(title: "Taskify")
         addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addTapped))
-        
+ 
         // Task tableview stuff
-        taskView = UITableView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT/9), style: UITableViewStyle.plain)
-       
+        taskView = UITableView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT - PHONEHEIGHT/9), style: UITableViewStyle.plain)
+  
         // Any use of self. must come after this
         //super.init(nibName: nil, bundle: nil)
         super.init(style: UITableViewStyle.plain)
         
         // Add navbar to current view (ViewController) and add '+' symbol
-        self.view.addSubview(navBar)
+        //self.view.addSubview(navBar)
         nav.rightBarButtonItem = addBarButton;
         navBar.setItems([nav], animated: false);
         
         // TaskView stuff
         taskView.dataSource = self
         taskView.delegate = self
+        self.view = UIView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT-PHONEHEIGHT/9))
         self.view.addSubview(taskView)
         
-        print("finished init")
+        //Has to be added after taskView otherwise overlayed
+        self.view.addSubview(navBar)
         
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
         print("Add Button Tapped")
         /*
-         Function needs to open another view with following fields:
+         Function needs to open another view with all task fields (see Task.swift):
          Title:
          Due Date: (not a required field as those unspecified  will sit in top of 
          Group: (drop down with things like School, Work, and Personal each with own color)
          Notes:
-         
+         etc.
         */
     }
     func editTable() {
@@ -82,10 +85,12 @@ class ViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print("num of main sections: \(tasks.count)")
         return tasks.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let (_,A) = tasks[section]
+        print("num of tasks in each section: \(A.count)")
         return A.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,7 +124,7 @@ class ViewController: UITableViewController {
     // UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (_,A) = tasks[indexPath.section]
-        // Unrwap will probably be problematic
+        // Unrwap will probably be problematic - It is...
         let alert: UIAlertController = UIAlertController(title:"\(A[indexPath.row].title): \(A[indexPath.row].title)", message:A[indexPath.row].notes!, preferredStyle:UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style:
             UIAlertActionStyle.default, handler:
@@ -154,7 +159,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
     }
-    
+    // Need to add checkboxes as a way of removing multiple things from table view at once
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case UITableViewCellEditingStyle.delete:
