@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     let addBarButton: UIBarButtonItem
     let nav: UINavigationItem
     let navBar: UINavigationBar
+    //private var taskView: UITableView
     // end declarations
     
     init() {
         print("entered init")
-        
         // Initialize and position navigation bar
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
         nav = UINavigationItem(title: "Taskify")
