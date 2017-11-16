@@ -22,10 +22,7 @@ class ViewController: UITableViewController {
     // end declarations
     
     init() {
-        print(tasks.count)
-        
         // Initialize and position navigation bar
-        
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
         nav = UINavigationItem(title: "Taskify")
         addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addTapped))
@@ -54,7 +51,6 @@ class ViewController: UITableViewController {
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
-        print("Add Button Tapped")
         /*
          Function needs to open another view with all task fields (see Task.swift):
          Title:
@@ -89,12 +85,10 @@ class ViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("num of main sections: \(tasks.count)")
         return tasks.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let (_,A) = tasks[section]
-        print("num of tasks in each section: \(A.count)")
         return A.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
