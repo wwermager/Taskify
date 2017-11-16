@@ -9,9 +9,19 @@
 import UIKit
 
 class EditTask: AddTask {
-    //init(string: string){
+    
+    override init() {
+        super.init()
         
-   // }
+        nav = UINavigationItem(title: "Edit Task")
+        nav.leftBarButtonItem = backBarButton
+        nav.rightBarButtonItem = doneBarButton
+        navBar.setItems([nav], animated: false)
+        
+        self.view = UIView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT-PHONEHEIGHT/9))
+        self.view.addSubview(navBar)
+ 
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

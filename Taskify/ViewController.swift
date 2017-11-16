@@ -63,10 +63,10 @@ class ViewController: UITableViewController {
          Notes:
          etc.
         */
-        let svc: AddTask = AddTask(string: "Test")
+        let svc: AddTask = AddTask()
         svc.view.backgroundColor = UIColor.lightGray
         self.present(svc, animated: true) { () -> Void in
-            NSLog("Task Edit View")
+            NSLog("AddTask View")
         }
     }
     func editTable() {
@@ -128,19 +128,14 @@ class ViewController: UITableViewController {
     // UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (_,A) = tasks[indexPath.section]
-        // Unrwap will probably be problematic - It is...
-        let alert: UIAlertController = UIAlertController(title:"\(A[indexPath.row].title): \(A[indexPath.row].title)", message:A[indexPath.row].notes!, preferredStyle:UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style:
-            UIAlertActionStyle.default, handler:
-            {(action: UIAlertAction!) -> Void in
-                // nothing to do
-        }))
+        let svc: EditTask = EditTask()
+        svc.view.backgroundColor = UIColor.lightGray
+        self.present(svc, animated: true) { () -> Void in
+            NSLog("EditTask View")
+
         tableView.deselectRow(at: indexPath, animated: false)
-        self.present(alert, animated: true, completion:
-            {() -> Void in
-                // nothing to do
-        })
-    }
+
+        }}
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
