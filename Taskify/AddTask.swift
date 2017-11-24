@@ -16,7 +16,7 @@ class AddTask: UIViewController {
     var nav: UINavigationItem
     let navBar: UINavigationBar
     let taskTitle: UITextField
-    
+    let titleLabel: UILabel
     
     init() {
         // Navigation Bar
@@ -27,6 +27,7 @@ class AddTask: UIViewController {
         
         // Input field declarations
         taskTitle = UITextField()
+        titleLabel = UILabel()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -38,26 +39,32 @@ class AddTask: UIViewController {
         self.view = UIView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT-PHONEHEIGHT/9))
         
         // Input Field Layouts
-        taskTitle.frame = CGRect(x: (PHONEWIDTH/2)-100, y: PHONEHEIGHT/2, width: 200, height: 50)
+        taskTitle.frame = CGRect(x: 10, y: (PHONEHEIGHT/9)+50, width: 200, height: 50)
         taskTitle.textColor = UIColor.black
         taskTitle.font = UIFont.systemFont(ofSize: 17.0)
-        taskTitle.placeholder = "<enter new top label>"
+        taskTitle.placeholder = "New Task"
         taskTitle.backgroundColor = UIColor.white
         taskTitle.borderStyle = UITextBorderStyle.bezel
         taskTitle.keyboardType = UIKeyboardType.default
         taskTitle.returnKeyType = UIReturnKeyType.done
         taskTitle.clearButtonMode = UITextFieldViewMode.always
+        
+        titleLabel.text = "Title:"
+        titleLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9),width: 200, height: 50)
+        titleLabel.textColor = UIColor.black
 //        taskTitle.delegate = self
         
 //        taskTitle.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
         // Add objects to view
         self.view.addSubview(taskTitle)
+        self.view.addSubview(titleLabel)
+    
         self.view.addSubview(navBar)
-        
-//        Need to add text fields to subview
+
         
     }
     
