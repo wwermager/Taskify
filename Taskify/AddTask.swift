@@ -48,6 +48,11 @@ class AddTask: UIViewController {
         taskTitle.returnKeyType = UIReturnKeyType.done
         taskTitle.clearButtonMode = UITextFieldViewMode.always
 //        taskTitle.delegate = self
+        
+//        taskTitle.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+//        name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+//        name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+//        name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         // Add objects to view
         self.view.addSubview(taskTitle)
         self.view.addSubview(navBar)
@@ -72,6 +77,15 @@ class AddTask: UIViewController {
             NSLog("Returned to Tasks")
         }
     }
+    //    Implement Later: Will allow for required fields by disabling done button
+//    func textFieldDidChange(textField: UITextField) {
+//        if name1.text == "" || name2.text == "" || name3.text == "" || name4.text == "" {
+//            //Disable button
+//        } else {
+//            //Enable button
+//        }
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
