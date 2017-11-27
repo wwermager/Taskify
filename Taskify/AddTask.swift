@@ -17,6 +17,10 @@ class AddTask: UIViewController {
     let navBar: UINavigationBar
     let taskTitle: UITextField
     let titleLabel: UILabel
+    let taskNote: UITextView // need text view to get multiline
+    let noteLabel: UILabel
+    let dueDate: UIDatePicker
+    let dateLabel: UILabel
     
     init() {
         // Navigation Bar
@@ -28,6 +32,10 @@ class AddTask: UIViewController {
         // Input field declarations
         taskTitle = UITextField()
         titleLabel = UILabel()
+        taskNote = UITextView()
+        noteLabel = UILabel()
+        dueDate = UIDatePicker()
+        dateLabel = UILabel()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -39,7 +47,7 @@ class AddTask: UIViewController {
         self.view = UIView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT-PHONEHEIGHT/9))
         
         // Input Field Layouts
-        taskTitle.frame = CGRect(x: 10, y: (PHONEHEIGHT/9)+50, width: 200, height: 50)
+        taskTitle.frame = CGRect(x: 10, y: (PHONEHEIGHT/9)+50, width: PHONEWIDTH/2, height: 50)
         taskTitle.textColor = UIColor.black
         taskTitle.font = UIFont.systemFont(ofSize: 17.0)
         taskTitle.placeholder = "New Task"
@@ -50,11 +58,33 @@ class AddTask: UIViewController {
         taskTitle.clearButtonMode = UITextFieldViewMode.always
         
         titleLabel.text = "Title:"
-        titleLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9),width: 200, height: 50)
+        titleLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9),width: PHONEWIDTH-20, height: 50)
         titleLabel.textColor = UIColor.black
+        
+        taskNote.frame = CGRect(x: 10, y: (PHONEHEIGHT/9)+150, width: PHONEWIDTH-20, height: 150)
+        taskNote.textColor = UIColor.black
+        taskNote.font = UIFont.systemFont(ofSize: 17.0)
+//        taskNote.placeholder = "New Task"
+        taskNote.backgroundColor = UIColor.white
+//        taskNote.borderStyle = UITextBorderStyle.bezel
+        taskNote.keyboardType = UIKeyboardType.default
+        taskNote.returnKeyType = UIReturnKeyType.done
+//        taskNote.clearButtonMode = UITextFieldViewMode.always
+        
+        noteLabel.text = "Notes:"
+        noteLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9)+100,width: 200, height: 50)
+        noteLabel.textColor = UIColor.black
+        
+        dateLabel.text = "Due Date:"
+        dateLabel.frame = CGRect(x:10,y:PHONEHEIGHT-150,width: 200, height: 50)
+        dateLabel.textColor = UIColor.black
+        
+        dueDate.frame = CGRect(x: 10, y: PHONEHEIGHT-100, width: PHONEWIDTH-20, height: 100)
+        dueDate.minimumDate = NSDate() as Date
+        dueDate.datePickerMode = .date
 //        taskTitle.delegate = self
         
-//        taskTitle.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        taskTitle.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControlEvents.editingChanged)
 //        name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
@@ -62,7 +92,11 @@ class AddTask: UIViewController {
         // Add objects to view
         self.view.addSubview(taskTitle)
         self.view.addSubview(titleLabel)
-    
+        
+        self.view.addSubview(taskNote)
+        self.view.addSubview(dueDate)
+        self.view.addSubview(dateLabel)
+        self.view.addSubview(noteLabel)
         self.view.addSubview(navBar)
 
         
@@ -85,13 +119,15 @@ class AddTask: UIViewController {
         }
     }
     //    Implement Later: Will allow for required fields by disabling done button
-//    func textFieldDidChange(textField: UITextField) {
-//        if name1.text == "" || name2.text == "" || name3.text == "" || name4.text == "" {
-//            //Disable button
-//        } else {
-//            //Enable button
-//        }
-//    }
+    func textFieldDidChange(textField: UITextField) {
+        if taskTitle.text == "" {//|| name2.text == "" || name3.text == "" || name4.text == "" {
+            //Disable button
+            doneBarButton.isEnabled = false
+        } else {
+            //Enable button
+            doneBarButton.isEnabled = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

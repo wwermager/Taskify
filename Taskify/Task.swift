@@ -12,7 +12,7 @@ class Task: NSObject {
     var title: String
     var dueDt: Date?
     var notes: String?
-    var color: Int // Have 3 colors minimum and each number corresponds to a color
+    var color: Int // work, school, or other
     var hiPriority: Bool // If true we'll have a small picture of flag on that task
     
     init(title: String, dueDt: Date? = nil, notes: String? = nil, color: Int, hiPriority: Bool) {
