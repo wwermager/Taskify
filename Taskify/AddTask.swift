@@ -84,7 +84,7 @@ class AddTask: UIViewController {
         dueDate.datePickerMode = .date
 //        taskTitle.delegate = self
         
-        taskTitle.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControlEvents.editingChanged)
+//        taskTitle.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControlEvents.editingChanged)
 //        name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
@@ -119,15 +119,15 @@ class AddTask: UIViewController {
         }
     }
     //    Implement Later: Will allow for required fields by disabling done button
-    func textFieldDidChange(textField: UITextField) {
-        if taskTitle.text == "" {//|| name2.text == "" || name3.text == "" || name4.text == "" {
-            //Disable button
-            doneBarButton.isEnabled = false
-        } else {
-            //Enable button
-            doneBarButton.isEnabled = true
-        }
-    }
+//    func textFieldDidChange(textField: UITextField) {
+//        if taskTitle.text == "" {//|| name2.text == "" || name3.text == "" || name4.text == "" {
+//            //Disable button
+//            doneBarButton.isEnabled = false
+//        } else {
+//            //Enable button
+//            doneBarButton.isEnabled = true
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
