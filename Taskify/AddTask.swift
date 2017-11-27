@@ -56,6 +56,7 @@ class AddTask: UIViewController {
         taskTitle.keyboardType = UIKeyboardType.default
         taskTitle.returnKeyType = UIReturnKeyType.done
         taskTitle.clearButtonMode = UITextFieldViewMode.always
+        taskTitle.autocorrectionType = .no
         
         titleLabel.text = "Title:"
         titleLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9),width: PHONEWIDTH-20, height: 50)
@@ -70,6 +71,7 @@ class AddTask: UIViewController {
         taskNote.keyboardType = UIKeyboardType.default
         taskNote.returnKeyType = UIReturnKeyType.done
 //        taskNote.clearButtonMode = UITextFieldViewMode.always
+        taskNote.autocorrectionType = .no
         
         noteLabel.text = "Notes:"
         noteLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9)+100,width: 200, height: 50)
@@ -92,7 +94,6 @@ class AddTask: UIViewController {
         // Add objects to view
         self.view.addSubview(taskTitle)
         self.view.addSubview(titleLabel)
-        
         self.view.addSubview(taskNote)
         self.view.addSubview(dueDate)
         self.view.addSubview(dateLabel)
