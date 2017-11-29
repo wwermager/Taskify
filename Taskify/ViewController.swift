@@ -19,17 +19,21 @@ class ViewController: UITableViewController {
     let addBarButton: UIBarButtonItem
     let nav: UINavigationItem
     let navBar: UINavigationBar
+    
     // end declarations
     
     init() {
         // Initialize and position navigation bar
+        
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.height)/9))
         nav = UINavigationItem(title: "Taskify")
         addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(addTapped))
  
         // Task tableview stuff
         taskView = UITableView(frame: CGRect(x: 0, y: PHONEHEIGHT/9, width: PHONEWIDTH, height: PHONEHEIGHT - PHONEHEIGHT/9), style: UITableViewStyle.plain)
-  
+        //multiple selection
+        //self.taskView.allowsMultipleSelection = true
+
         // Any use of self. must come after this
         //super.init(nibName: nil, bundle: nil)
         super.init(style: UITableViewStyle.plain)
@@ -65,6 +69,7 @@ class ViewController: UITableViewController {
             NSLog("AddTask View")
         }
     }
+    
     func editTable() {
         taskView.setEditing(!taskView.isEditing, animated: true)
     }
@@ -162,5 +167,27 @@ class ViewController: UITableViewController {
             break
         }
     }
+    //check box start
+    
+    
+    
+    /*var rowsWhichAreChecked = [NSIndexPath]()
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell:FavCell = tableView.cellForRowAtIndexPath(indexPath) as! FavCell
+        // cross checking for checked rows
+        if(rowsWhichAreChecked.contains(indexPath) == false){
+            cell.checkBox.isChecked = true
+            rowsWhichAreChecked.append(indexPath)
+        }else{
+            cell.checkBox.isChecked = false
+            // remove the indexPath from rowsWhichAreCheckedArray
+            if let checkedItemIndex = rowsWhichAreChecked.index(of: indexPath){
+                rowsWhichAreChecked.remove(at: checkedItemIndex)
+            }
+        }
+    }*/
+    
+    
 }
 

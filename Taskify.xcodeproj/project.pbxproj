@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C8A26D41FBFAC8100019DB2 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A26D31FBFAC8100019DB2 /* Checkbox.swift */; };
 		75CBDB181FBBD0EF00E19DA6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB171FBBD0EF00E19DA6 /* Task.swift */; };
 		75CBDB1A1FBCE56700E19DA6 /* EditTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB191FBCE56700E19DA6 /* EditTask.swift */; };
 		75CBDB1C1FBD013100E19DA6 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CBDB1B1FBD013100E19DA6 /* AddTask.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C8A26D31FBFAC8100019DB2 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		75CBDB171FBBD0EF00E19DA6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		75CBDB191FBCE56700E19DA6 /* EditTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTask.swift; sourceTree = "<group>"; };
 		75CBDB1B1FBD013100E19DA6 /* AddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				75DACF161FA9779D00900F6D /* AppDelegate.swift */,
+				2C8A26D31FBFAC8100019DB2 /* Checkbox.swift */,
 				75DACF181FA9779D00900F6D /* ViewController.swift */,
 				75CBDB191FBCE56700E19DA6 /* EditTask.swift */,
 				75CBDB1B1FBD013100E19DA6 /* AddTask.swift */,
@@ -147,6 +150,7 @@
 			files = (
 				75DACF191FA9779D00900F6D /* ViewController.swift in Sources */,
 				75CBDB1C1FBD013100E19DA6 /* AddTask.swift in Sources */,
+				2C8A26D41FBFAC8100019DB2 /* Checkbox.swift in Sources */,
 				75CBDB181FBBD0EF00E19DA6 /* Task.swift in Sources */,
 				75CBDB1A1FBCE56700E19DA6 /* EditTask.swift in Sources */,
 				75DACF171FA9779D00900F6D /* AppDelegate.swift in Sources */,
@@ -287,11 +291,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QWCZ7SVT59;
+				DEVELOPMENT_TEAM = X8N83TP2QB;
 				INFOPLIST_FILE = Taskify/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.wermager.Taskify;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nick.Taskify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -303,11 +307,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QWCZ7SVT59;
+				DEVELOPMENT_TEAM = X8N83TP2QB;
 				INFOPLIST_FILE = Taskify/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.wermager.Taskify;
+				PRODUCT_BUNDLE_IDENTIFIER = me.nick.Taskify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
