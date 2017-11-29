@@ -33,6 +33,7 @@ class EditTask: AddTask {
         self.view.addSubview(dueDate)
         self.view.addSubview(dateLabel)
         self.view.addSubview(noteLabel)
+        self.view.addSubview(hasDueDate)
         self.view.addSubview(navBar)
  
     }

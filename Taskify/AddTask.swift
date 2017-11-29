@@ -22,7 +22,8 @@ class AddTask: UIViewController {
     let noteLabel: UILabel
     let dueDate: UIDatePicker
     let dateLabel: UILabel
-
+    let hasDueDate: UIButton
+    var wasPressed: Bool
     
     init() {
         // Navigation Bar
@@ -39,7 +40,9 @@ class AddTask: UIViewController {
         noteLabel = UILabel()
         dueDate = UIDatePicker()
         dateLabel = UILabel()
+        hasDueDate = UIButton(type: UIButtonType.custom)
         
+        wasPressed = false
 
         super.init(nibName: nil, bundle: nil)
         
@@ -84,16 +87,26 @@ class AddTask: UIViewController {
         dateLabel.text = "Due Date:"
         dateLabel.frame = CGRect(x:10,y:PHONEHEIGHT-150,width: 200, height: 50)
         dateLabel.textColor = UIColor.black
+        dateLabel.isHidden = true
         
         dueDate.frame = CGRect(x: 10, y: PHONEHEIGHT-100, width: PHONEWIDTH-20, height: 100)
         dueDate.minimumDate = NSDate() as Date
         dueDate.datePickerMode = .date
+        dueDate.isEnabled = false
+        dueDate.isHidden = true
 //        taskTitle.delegate = self
         
 //        taskTitle.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControlEvents.editingChanged)
 //        name2.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name3.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 //        name4.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        hasDueDate.frame = CGRect(x: PHONEWIDTH-100, y: (PHONEHEIGHT/9), width: 100, height: 50)
+        hasDueDate.backgroundColor = UIColor.black
+        hasDueDate.isUserInteractionEnabled = true
+        hasDueDate.isHidden = false
+        
+        hasDueDate.setTitle("DD Temp", for: .normal)
+        hasDueDate.addTarget(self, action: #selector(AddTask.buttonPressed), for: UIControlEvents.touchUpInside)
         
         // Add objects to view
         self.view.addSubview(taskTitle)
@@ -102,10 +115,24 @@ class AddTask: UIViewController {
         self.view.addSubview(dueDate)
         self.view.addSubview(dateLabel)
         self.view.addSubview(noteLabel)
+        self.view.addSubview(hasDueDate)
         self.view.addSubview(navBar)
 
     }
-    
+    @objc func buttonPressed() {
+        NSLog("Button pressed")
+        wasPressed = !wasPressed
+        if wasPressed {
+            dateLabel.isHidden = false
+            dueDate.isEnabled = true
+            dueDate.isHidden = false
+        }
+        else {
+            dateLabel.isHidden = true
+            dueDate.isEnabled = false
+            dueDate.isHidden = true
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
