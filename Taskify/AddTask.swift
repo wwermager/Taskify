@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTask: UIViewController {
+class AddTask: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     
     let backBarButton: UIBarButtonItem
@@ -16,9 +16,9 @@ class AddTask: UIViewController {
     var nav: UINavigationItem
     let navBar: UINavigationBar
 
-    let taskTitle: UITextField
+    var taskTitle: UITextField
     let titleLabel: UILabel
-    let taskNote: UITextView // need text view to get multiline
+    var taskNote: UITextView // need text view to get multiline
     let noteLabel: UILabel
     let dueDate: UIDatePicker
     let dateLabel: UILabel
@@ -45,7 +45,13 @@ class AddTask: UIViewController {
         wasPressed = false
 
         super.init(nibName: nil, bundle: nil)
-        
+//        if let text = taskTitle.text, let text1 = taskNote.text {
+//            taskTitle.text = ""
+//            taskNote.text = ""
+//        } else {
+//            taskTitle.text = ""
+//            taskNote.text = ""
+//        }
         // Navigation Bar Buttons
         nav.leftBarButtonItem = backBarButton
         nav.rightBarButtonItem = doneBarButton
@@ -61,9 +67,10 @@ class AddTask: UIViewController {
         taskTitle.backgroundColor = UIColor.white
         taskTitle.borderStyle = UITextBorderStyle.bezel
         taskTitle.keyboardType = UIKeyboardType.default
-        taskTitle.returnKeyType = UIReturnKeyType.done
+        taskTitle.returnKeyType = UIReturnKeyType.default
         taskTitle.clearButtonMode = UITextFieldViewMode.always
         taskTitle.autocorrectionType = .no
+        
         
         titleLabel.text = "Title:"
         titleLabel.frame = CGRect(x:10,y:(PHONEHEIGHT/9),width: PHONEWIDTH-20, height: 50)
@@ -76,7 +83,7 @@ class AddTask: UIViewController {
         taskNote.backgroundColor = UIColor.white
 //        taskNote.borderStyle = UITextBorderStyle.bezel
         taskNote.keyboardType = UIKeyboardType.default
-        taskNote.returnKeyType = UIReturnKeyType.done
+        taskNote.returnKeyType = UIReturnKeyType.default
 //        taskNote.clearButtonMode = UITextFieldViewMode.always
         taskNote.autocorrectionType = .no
         
@@ -94,6 +101,7 @@ class AddTask: UIViewController {
         dueDate.datePickerMode = .date
         dueDate.isEnabled = false
         dueDate.isHidden = true
+
 //        taskTitle.delegate = self
         
 //        taskTitle.addTarget(self, action: Selector(("textFieldDidChange:")), for: UIControlEvents.editingChanged)
@@ -108,6 +116,9 @@ class AddTask: UIViewController {
         hasDueDate.setTitle("DD Temp", for: .normal)
         hasDueDate.addTarget(self, action: #selector(AddTask.buttonPressed), for: UIControlEvents.touchUpInside)
         
+//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
+        
+//        doneBarButton.isEnabled = false
         // Add objects to view
         self.view.addSubview(taskTitle)
         self.view.addSubview(titleLabel)
@@ -117,7 +128,7 @@ class AddTask: UIViewController {
         self.view.addSubview(noteLabel)
         self.view.addSubview(hasDueDate)
         self.view.addSubview(navBar)
-
+        enableDoneButton()
     }
     @objc func buttonPressed() {
         NSLog("Button pressed")
@@ -133,7 +144,9 @@ class AddTask: UIViewController {
             dueDate.isHidden = true
         }
     }
-    
+    func enableDoneButton() {
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -145,13 +158,22 @@ class AddTask: UIViewController {
     }
     @objc func doneTapped(sender: UIBarButtonItem) {
         // Function needs to add task to array of tasks
+
+        tasks.append(("", [Task(title: taskTitle.text!, notes: taskNote.text!, color: 1, hiPriority: false)]))
         let svc: ViewController = ViewController()
         self.present(svc, animated: false) { () -> Void in
             NSLog("Returned to Tasks")
+            
         }
     }
-    //    Implement Later: Will allow for required fields by disabling done button
-//    func textFieldDidChange(textField: UITextField) {
+    
+//    @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
+//        NSLog("Does this crap work?")
+//        self.isEditing = false //attempting to dismiss keyboard
+//    }
+//        Implement Later: Will allow for required fields by disabling done button
+
+//    private func textFieldDidChange(textField: UITextField) {
 //        if taskTitle.text == "" {//|| name2.text == "" || name3.text == "" || name4.text == "" {
 //            //Disable button
 //            doneBarButton.isEnabled = false
@@ -163,13 +185,20 @@ class AddTask: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.taskTitle.delegate = self
+//        self.taskNote.delegate = self
+//        self.hideKeyboard()
         // Do any additional setup after loading the view.
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
 }
+
